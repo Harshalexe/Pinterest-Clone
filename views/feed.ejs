@@ -1,0 +1,22 @@
+<% include ./partial/header.ejs %>
+<div class="grid1">
+  <% allPosts.forEach(function(post){ %>
+    <div class="card" style="width: 18rem;">
+      <img src="/images/upload/<%= post.image %>" class="card-img-top" alt="...">
+      <div class="card-body1">
+        <h4 class="card-title1 "><%= post.postText %></h4>
+        <div class="inffo"> 
+          <div class="imggg"><img src="/images/profilepic/<%=post.user.dp%>" class="round-one" alt="">
+          </div>
+          <a href="/profile2/<%= post.user._id %>" class=" flexx text-decoration-none"> 
+            <p class="ok" style="display: inline;">@<%= post.user.username %></p>
+            <a href="/images/upload/<%= post.image %>" download class="text-decoration-none col-blk">
+              <img class="download" src="../images/download-icon.jpg" alt="">
+            </a>
+          </a>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+</div>
+<% include ./partial/footer.ejs %>

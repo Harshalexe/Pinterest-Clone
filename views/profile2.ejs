@@ -1,0 +1,47 @@
+<% include ./partial/header.ejs %>
+<div id="algn">
+  <form id="uploadform" hidden action="/uploadprofilepic" method="post" enctype="multipart/form-data">
+    <input type="file" name="image">
+  </form>
+  <div id="cardx">
+    <div id="upper-bg">
+      <img src="/images/profilepic/<%=user.dp %>" class="profile-pic">
+    </div>
+    <div id="lower-bg">
+      <div class="text">
+        <p class="name"><h3><%= user.fullname %></h3></p>
+        <p class="name">@<%= user.username %></p>
+        <p class="title">Description <br> Description</p>
+      </div>
+      <div id="icons">
+        <a href="#" class="ico"><img width="48" height="48" src="https://img.icons8.com/color/48/gmail-new.png" alt="gmail-new"/></a>
+        <a href="#" class="ico">
+          <img width="48" height="48" src="https://img.icons8.com/fluency/48/github.png" alt="github"/>
+        </a>
+        <a href="#" class="ico">
+          <img width="48" height="48" src="https://img.icons8.com/color/48/linkedin.png" alt="linkedin"/>
+        </a>
+        <a href="#" class="ico">
+          <img width="48" height="48" src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new"/>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<h3 class="hmm">Collections</h3>
+<div class="contain">
+  <% if (user.posts && user.posts.length > 0) { %>
+    <a class="text-decoration-none" href="/coll2/<%=user._id %>">
+      <div class="card" style="width: 18rem;">
+        <img src="/images/upload/<%= user.posts[0].image %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Total Pins:<%= user.posts.length %></h5>
+          <p class="card-text"></p>
+        </div>
+      </div>
+    </a>
+  <% } else { %>
+    <p>No posts available</p>
+  <% } %>
+</div>
+<% include ./partial/footer.ejs %>

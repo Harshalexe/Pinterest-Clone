@@ -1,0 +1,65 @@
+<% include ./partial/header.ejs %>
+    <div id="algn">
+      <form id="uploadform" hidden action="/uploadprofilepic" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+      </form>
+        <div id="card">
+            <div id="upper-bg">
+              <span id="uploadicon" class="editt"><i class="ri-pencil-fill pencil"></i></span>
+                <img src="/images/profilepic/<%=user.dp %>" class="profile-pic">
+            </div>
+            <div id="lower-bg">
+              <div class="text">
+                <p class="name"><h3><%= user.fullname %></h3></p>
+                <p class="name">@<%= user.username %></p>
+                <p class="title">Description <br> Description</p>
+              </div>
+              <div id="icons">
+                <a href="#" class="ico"><img width="48" height="48" src="https://img.icons8.com/color/48/gmail-new.png" alt="gmail-new"/></a>
+                <a href="#" class="ico">
+                  <img width="48" height="48" src="https://img.icons8.com/fluency/48/github.png" alt="github"/>
+                </a>
+                <a href="#" class="ico">
+                  <img width="48" height="48" src="https://img.icons8.com/color/48/linkedin.png" alt="linkedin"/>
+                </a>
+                <a href="#" class="ico">
+                  <img width="48" height="48" src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new"/>
+                </a>
+              </div>
+              <div id="btn">
+                <a href="/logout" class="msg">Logout</a>
+                
+              </div>
+            </div>
+            <div class="absoulte">
+              <form class ="inputt" action="/upload" method="post" enctype="multipart/form-data">
+                <input class="absoulte" type="file" name="file">
+                <input class="captionn" type="text" name="filecaption" placeholder="Caption">
+                <button class="msg1" type="submit">Add New Pin</button>
+              </form>
+            </div>
+        </div>
+        </div>
+        <h3 class="hmm">Collections</h3>
+        <div class="contain">
+          <a class="text-decoration-none" href="/coll">
+              <div class="card" style="width: 18rem;">
+                <img src="/images/upload/<%= user?.posts[0]?.image %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Total Pins:<%=user?.posts?.length %></h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+          </a>
+            </div>  
+            <script>
+              document.querySelector('#uploadicon').addEventListener("click", function(){
+                document.querySelector("#uploadform input").click()
+              })
+
+              document.querySelector("#uploadform input").addEventListener('change',function(){
+                document.querySelector("#uploadform").submit();
+              })
+
+            </script>
+            <% include ./partial/footer.ejs %>
